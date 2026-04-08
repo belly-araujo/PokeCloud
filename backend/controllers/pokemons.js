@@ -1,10 +1,6 @@
-// controllers/pokemons.js
-// pokemons.js dentro de controllers serve para lidar com as requisições relacionadas aos pokémons(criar, ler, atualizar e deletar)
-// no banco de dados.
-
 import { db } from "../db.js";
 
-export const getPokemons = (_, res) => {
+export const getPokemons = (_, res) => { 
   const q = "SELECT * FROM pokemons";
 
   db.query(q, (err, data) => {

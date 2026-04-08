@@ -1,9 +1,6 @@
-// serve para criar a interface do usuário 
-// se comunica com o backend para exibir, criar, editar e deletar pokémons 
-
 import { useEffect, useState } from "react";
 
-function App() { // componente principal
+function App() { 
   const [pokemons, setPokemons] = useState([]); 
   const [form, setForm] = useState({
     nome: "",
@@ -18,22 +15,22 @@ function App() { // componente principal
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [message, setMessage] = useState("");
 
-  const fetchPokemons = () => {
+  const fetchPokemons = () => { 
     fetch("http://localhost:8800/pokemons")
       .then((res) => res.json())
       .then((data) => setPokemons(data))
       .catch(() => setMessage("Erro ao carregar pokémons"));
   };
 
-  useEffect(() => { // carrega os pokémons quando o componente é montado
+  useEffect(() => { 
     fetchPokemons();
   }, []);
 
-  const handleChange = (e) => { //atualiza os valores do formulário conforme o usuário digita
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => { // envia os dados do formulário para o backend para criar ou atualizar um pokémon
+  const handleSubmit = (e) => { 
     e.preventDefault();
 
     const method = editId ? "PUT" : "POST";
